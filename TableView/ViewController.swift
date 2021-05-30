@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    var students = [("ali","ali"),("ahmed","ahmed"),("sara","sara")]
+    var students = [("Ahmed","first year"),("Sara","second year"),("Ali","first year"),("Ayoub","third year")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "i'm a cell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = students[indexPath.row].0
+        cell.detailTextLabel?.text = students[indexPath.row].1
         return cell
     }
     
